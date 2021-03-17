@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'home#index'
+  root to: 'driving_records#index'
+
+  resources :upload, only: [:index]
 end

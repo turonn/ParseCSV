@@ -4,7 +4,7 @@ Driver.create([
   },
 ])
 
-DrivingRecord.create([
+drivingRecord = DrivingRecord.create([
   {
     driver_id: 1,
     start_time: DateTime.new(2021, 9, 1, 19, 30),

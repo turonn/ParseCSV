@@ -1,0 +1,27 @@
+<h2>This is the Home View</h2>
+
+<table style="width:100%">
+  <tr>
+    <th>Driver</th>
+    <th>Start Time</th>
+    <th>End Time</th>
+    <th>Start Location</th>
+    <th>End Location</th>
+  </tr>
+  <% unless @drivingRecords == [] %>
+    <% @drivingRecords.each do |record| %>
+      <tr>
+        <td><%= record.driver.name %></td>
+        <th><%= record.start_time %></th>
+        <th><%= record.end_time %></th>
+        <th><%= record.start_location %></th>
+        <th><%= record.end_location %></th>
+      </tr>
+    <% end %>
+  <% else %>
+  <tr>
+    <td>No data</td>
+    <td>in your database</td>
+  </tr>
+  <% end%>
+</table>
