@@ -1,1 +1,15 @@
 <h2>Upload File</h2>
+
+<p>These are the requirements to upload...</p>
+<ul>
+  <li>Requirement</li>
+  <li>Requirement</li>
+  <li>Requirement</li>
+</ul>
+
+
+<h3>Upload Driving Records</h3>
+<%= form_tag import_driving_records_path, multipart: true do %>
+  <label for="file">File to Upload</label> <%= file_field_tag :file %>
+  <%= submit_tag "Upload Records" %>
+<% end %>
