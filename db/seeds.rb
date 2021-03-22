@@ -7,9 +7,8 @@ Driver.create([
 drivingRecord = DrivingRecord.create([
   {
     driver_id: 1,
-    start_time: DateTime.new(2021, 9, 1, 19, 30),
-    end_time: DateTime.new(2021, 9, 1, 19, 30),
-    start_location: "not sure how to code this",
-    end_location: 'not sure how to code this either'
+    start_time: "7:15",
+    end_time: "7:45",
+    miles_driven: "25"
   }
 ])

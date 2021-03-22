@@ -23,10 +23,9 @@ ActiveRecord::Schema.define(version: 2021_03_16_185252) do
 
   create_table "driving_records", force: :cascade do |t|
     t.bigint "driver_id"
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.string "start_location"
-    t.string "end_location"
+    t.string "start_time"
+    t.string "end_time"
+    t.string "miles_driven"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["driver_id"], name: "index_driving_records_on_driver_id"

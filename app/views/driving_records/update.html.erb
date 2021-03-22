@@ -1,0 +1,9 @@
+<h2>Update Driving Record</h2>
+
+<%= form_with model: @record do |form| %>
+  <%= form.text_field :driver %>
+  <%= form.text_field :start_time %>
+  <%= form.text_field :end_time %>
+  <%= form.text_field :miles_driven %>
+  <%= form.submit %>
+<% end %>

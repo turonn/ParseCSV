@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
   post 'upload/import', to: 'upload#import', as: 'import_driving_records'
   resources :upload, only: [:index]
+
+  resources :driving_records, only: [:new, :create, :update, :destroy]
 end

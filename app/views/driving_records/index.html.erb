@@ -1,3 +1,9 @@
+<style>
+ td {
+   text-align: center
+ }
+</style>
+
 <h2>This is the DrivingRecords View</h2>
 
 <table style="width:100%">
@@ -5,17 +11,19 @@
     <th>Driver</th>
     <th>Start Time</th>
     <th>End Time</th>
-    <th>Start Location</th>
-    <th>End Location</th>
+    <th>Miles Driven</th>
+    <th>Edit Record</th>
+    <th>Delete Record</th>
   </tr>
   <% unless @drivingRecords == [] %>
     <% @drivingRecords.each do |record| %>
       <tr>
         <td><%= record.driver.name %></td>
-        <th><%= record.start_time %></th>
-        <th><%= record.end_time %></th>
-        <th><%= record.start_location %></th>
-        <th><%= record.end_location %></th>
+        <td><%= record.start_time %></th>
+        <td><%= record.end_time %></th>
+        <td><%= record.miles_driven %></th>
+        <td><%= link_to "edit", driving_record_path(record.id), method: :patch %> </td>
+        <td><%= link_to "delete", driving_record_path(record.id), method: :delete %> </td>
       </tr>
     <% end %>
   <% else %>
@@ -25,4 +33,12 @@
   </tr>
   <% end%>
 </table>
+
+<br/>
+
+<%= button_to "upload driving record", upload_index_path, method: :get %>
+
+<br/>
+
+<%= button_to "add single record", new_driving_record_path, method: :get %>
 
