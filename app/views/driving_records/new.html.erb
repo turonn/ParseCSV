@@ -1,8 +1,29 @@
 <h2>Create New Driving Record</h2>
 
-<%= form_with model: @record do |form| %>
-  <%= form.text_field :start_time %>
-  <%= form.text_field :end_time %>
-  <%= form.text_field :miles_driven %>
-  <%= form.submit %>
+<%= form_with model: @record do |f| %>
+
+  <div class="field">
+    <%= f.label :driver_id %><br />
+     <%= f.collection_select :driver_id, Driver.order(:name), :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_time %><br />
+    <%= f.text_field :start_time %>
+  </div>
+
+  <div class="field">
+    <%= f.label :end_time %><br />
+    <%= f.text_field :end_time %>
+  </div>
+
+  <div class="field">
+    <%= f.label :miles_driven %><br />
+    <%= f.text_field :miles_driven %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "submit" %>
+  </div>
+
 <% end %>

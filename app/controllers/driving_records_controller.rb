@@ -1,6 +1,6 @@
 class DrivingRecordsController < ApplicationController
   before_action :set_driving_records, only: [:index]
-  before_action :set_single_record, only: %i[update destroy]
+  before_action :set_single_record, only: [:update, :destroy]
 
   def index
     #driving_records_path
@@ -23,6 +23,8 @@ class DrivingRecordsController < ApplicationController
   end
 
   def update
+
+
     if @record.save
       redirect_to driving_records_path, notice: "Record updated"
     else
@@ -34,6 +36,8 @@ class DrivingRecordsController < ApplicationController
   end
 
   def destroy
+    @record.destroy
+    redirect_to root_path, alert: "record deleted"
     #driving_records_path DELETE
   end
 
@@ -48,7 +52,7 @@ class DrivingRecordsController < ApplicationController
   end
 
   def driving_record_params
-    params.require(:driving_records).permit(:driver, :start_time, :end_time, :miles_driven)
+    params.require(:driving_record).permit(:driver_id, :start_time, :end_time, :miles_driven)
   end
 
 end
