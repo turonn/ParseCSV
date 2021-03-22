@@ -1,0 +1,46 @@
+<style>
+ td {
+   text-align: center
+ }
+</style>
+
+<h2>This is the Drivers View</h2>
+
+<table>
+  <tr>
+    <th>Driver</th>
+    <th>Average Speed</th>
+    <th>Average Trip Time</th>
+    <th>Average Trip Length</th>
+    <th>numbrer of trips</th>
+    <th>Edit Record</th>
+    <th>Delete Record</th>
+  </tr>
+  <% unless @drivers == [] %>
+    <% @drivers.each do |driver| %>
+      <tr>
+        <td><%= driver.name %></td>
+        <td><%= "avg speed" %></th>
+        <td><%= "avg time" %></th>
+        <td><%= "avg leng" %></th>
+        <td><%= driver.driving_records.count %></th>
+        <td><%= link_to "edit", edit_driver_path(driver.id) %> </td>
+        <td><%= link_to "delete", drivers_path(driver.id), method: :delete %> </td>
+      </tr>
+    <% end %>
+  <% else %>
+  <tr>
+    <td>No data</td>
+    <td>in your database</td>
+  </tr>
+  <% end%>
+</table>
+
+<br/>
+
+<%= button_to "upload driving record", upload_index_path, method: :get %>
+
+<br/>
+
+<%= button_to "add single driver", new_driver_path, method: :get %>
+

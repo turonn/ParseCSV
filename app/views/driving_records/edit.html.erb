@@ -3,8 +3,8 @@
 <%= form_with model: @record do |f| %>
 
   <div class="field">
-    <%= f.label :driver %><br />
-    <%= f.text_field :driver, autofocus: true %>
+    <%= f.label :driver_id %><br />
+     <%= f.collection_select :driver_id, Driver.order(:name), :id, :name %>
   </div>
 
   <div class="field">

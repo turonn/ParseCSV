@@ -1,0 +1,14 @@
+<h2>Create New Driver</h2>
+
+<%= form_with model: @driver do |f| %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "submit" %>
+  </div>
+
+<% end %>

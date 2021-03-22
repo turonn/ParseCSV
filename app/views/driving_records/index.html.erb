@@ -1,12 +1,6 @@
-<style>
- td {
-   text-align: center
- }
-</style>
-
 <h2>This is the DrivingRecords View</h2>
 
-<table style="width:100%">
+<table>
   <tr>
     <th>Driver</th>
     <th>Start Time</th>
@@ -22,7 +16,7 @@
         <td><%= record.start_time %></th>
         <td><%= record.end_time %></th>
         <td><%= record.miles_driven %></th>
-        <td><%= link_to "edit", driving_record_path(record.id), method: :patch %> </td>
+        <td><%= link_to "edit", edit_driving_record_path(record.id) %> </td>
         <td><%= link_to "delete", driving_record_path(record.id), method: :delete %> </td>
       </tr>
     <% end %>

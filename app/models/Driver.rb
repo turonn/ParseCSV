@@ -8,5 +8,5 @@
 #  updated_at :datetime         not null
 #
 class Driver < ApplicationRecord
-  has_many :driving_records, class_name: 'DriveingRecord', foreign_key: :driver_id
+  has_many :driving_records, class_name: 'DrivingRecord', foreign_key: :driver_id
 end

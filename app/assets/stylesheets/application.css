@@ -13,3 +13,11 @@
   text-align: center;
   background-color: #CC3333;
 }
+
+table {
+  width: 100%;
+}
+
+td {
+  text-align: center;
+}

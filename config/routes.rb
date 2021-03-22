@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :upload, only: [:index]
 
   resources :driving_records
+
+  resources :drivers
 end

@@ -1,6 +1,6 @@
 class DrivingRecordsController < ApplicationController
   before_action :set_driving_records, only: [:index]
-  before_action :set_single_record, only: [:update, :destroy]
+  before_action :set_single_record, only: [:edit, :update, :destroy]
 
   def index
     #driving_records_path
@@ -14,21 +14,25 @@ class DrivingRecordsController < ApplicationController
   def create
     @record = DrivingRecord.new(driving_record_params)
 
+    #if we can save the record with those params...
     if @record.save
-      redirect_to driving_records_path, notice: "Record created"
+      redirect_to driving_records_path, notice: "record created"
     else
-      render 'new', alert: "did not save"
+      render :new, alert: "did not save"
     end
 
   end
 
+  def edit
+    
+  end
+
   def update
 
-
-    if @record.save
-      redirect_to driving_records_path, notice: "Record updated"
+    if @record.update(driving_record_params)
+      redirect_to driving_records_path, notice: "record updated"
     else
-      render 'new', alert: "did not save"
+      render :edit, alert: "did not update"
     end
   end
 
@@ -36,8 +40,12 @@ class DrivingRecordsController < ApplicationController
   end
 
   def destroy
-    @record.destroy
-    redirect_to root_path, alert: "record deleted"
+    if @record.destroy
+      redirect_to root_path, notice: "record deleted"
+    else
+      redirect_to root_path, alert: "record deleted"
+    end
+    
     #driving_records_path DELETE
   end
 
