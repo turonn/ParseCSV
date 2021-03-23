@@ -1,19 +1,20 @@
+<div style="text-align: center;">
 <h2>Upload File</h2>
+  <h4>These are the requirements to upload...</h4>
+  <p>- Expecting a .txt file separated by spaces</p>
+  <p>- Each line must start with the key word "Driver" or "Trip"</p>
+  <p>- Drivers can only have one name ex: "Dan" or "Seri"</p>
+  
+  <br/>
+  <br/>
+  
+  <h4>Upload Driving Records</h4>
+  <%= form_tag import_driving_records_path, multipart: true do %>
+    <label for="file">File to Upload</label> <%= file_field_tag :file %>
+    <%= submit_tag "Upload Records", class:"button-submit" %>
+  <% end %>
 
-<p>These are the requirements to upload...</p>
-<ul>
-  <li>Requirement</li>
-  <li>Requirement</li>
-  <li>Requirement</li>
-</ul>
+  <br/>
 
-
-<h3>Upload Driving Records</h3>
-<%= form_tag import_driving_records_path, multipart: true do %>
-  <label for="file">File to Upload</label> <%= file_field_tag :file %>
-  <%= submit_tag "Upload Records" %>
-<% end %>
-
-<br/>
-
-<%= button_to "back to driving records", root_path, method: :get %>
+</div>
+<%= button_to "back to driving records", root_path, method: :get, class:"button" %>

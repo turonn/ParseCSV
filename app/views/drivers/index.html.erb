@@ -9,10 +9,10 @@
 <table>
   <tr>
     <th>Driver</th>
-    <th>Average Speed</th>
+    <th>numbrer of trips</th>
     <th>Average Trip Time</th>
     <th>Average Trip Length</th>
-    <th>numbrer of trips</th>
+    <th>Average Speed</th>
     <th>Edit Record</th>
     <th>Delete Record</th>
   </tr>
@@ -20,12 +20,12 @@
     <% @drivers.each do |driver| %>
       <tr>
         <td><%= driver.name %></td>
-        <td><%= "avg speed" %></th>
+        <td><%= driver.driving_records.count %></th>
         <td><%= "avg time" %></th>
         <td><%= "avg leng" %></th>
-        <td><%= driver.driving_records.count %></th>
+        <td><%= "avg speed" %></th>
         <td><%= link_to "edit", edit_driver_path(driver.id) %> </td>
-        <td><%= link_to "delete", drivers_path(driver.id), method: :delete %> </td>
+        <td><%= link_to "delete", driver_path(driver.id), method: :delete %> </td>
       </tr>
     <% end %>
   <% else %>
@@ -38,9 +38,9 @@
 
 <br/>
 
-<%= button_to "upload driving record", upload_index_path, method: :get %>
+<%= button_to "upload driving record", upload_index_path, method: :get, class:"button" %>
 
 <br/>
 
-<%= button_to "add single driver", new_driver_path, method: :get %>
+<%= button_to "add single driver", new_driver_path, method: :get, class:"button" %>
 
