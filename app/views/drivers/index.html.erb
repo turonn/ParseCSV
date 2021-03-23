@@ -10,8 +10,8 @@
   <tr>
     <th>Driver</th>
     <th>numbrer of trips</th>
-    <th>Average Trip Time</th>
-    <th>Average Trip Length</th>
+    <th>Total Time</th>
+    <th>Total Distance</th>
     <th>Average Speed</th>
     <th>Edit Record</th>
     <th>Delete Record</th>
@@ -21,9 +21,9 @@
       <tr>
         <td><%= driver.name %></td>
         <td><%= driver.driving_records.count %></th>
-        <td><%= "avg time" %></th>
-        <td><%= "avg leng" %></th>
-        <td><%= "avg speed" %></th>
+        <td><%= total_time(driver) %></th>
+        <td><%= total_miles(driver) %></th>
+        <td><%= average_speed(driver) %></th>
         <td><%= link_to "edit", edit_driver_path(driver.id) %> </td>
         <td><%= link_to "delete", driver_path(driver.id), method: :delete %> </td>
       </tr>

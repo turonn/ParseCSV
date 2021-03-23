@@ -5,6 +5,7 @@
     <th>Driver</th>
     <th>Start Time</th>
     <th>End Time</th>
+    <th>Total Time</th>
     <th>Miles Driven</th>
     <th>Edit Record</th>
     <th>Delete Record</th>
@@ -15,6 +16,7 @@
         <td><%= record.driver.name %></td>
         <td><%= record.start_time %></th>
         <td><%= record.end_time %></th>
+        <td><%= record.total_time %></th>
         <td><%= record.miles_driven %></th>
         <td><%= link_to "edit", edit_driving_record_path(record.id) %> </td>
         <td><%= link_to "delete", driving_record_path(record.id), method: :delete %> </td>

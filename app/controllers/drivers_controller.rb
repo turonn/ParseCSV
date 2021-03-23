@@ -40,7 +40,9 @@ class DriversController < ApplicationController
   end
 
   def destroy
-    if @driver.destroy
+    if @driver.driving_records.count != 0
+      redirect_to drivers_path, alert: "Driver has trips assigned. Cannot delete."
+    elsif @driver.destroy
       redirect_to drivers_path, notice: "driver deleted"
     else
       redirect_to drivers_path, alert: "driver not deleted"

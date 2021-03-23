@@ -60,7 +60,7 @@ class DrivingRecordsController < ApplicationController
   end
 
   def driving_record_params
-    params.require(:driving_record).permit(:driver_id, :start_time, :end_time, :miles_driven)
+    params.require(:driving_record).permit(:driver_id, :start_time, :end_time, :total_time, :miles_driven)
   end
 
 end

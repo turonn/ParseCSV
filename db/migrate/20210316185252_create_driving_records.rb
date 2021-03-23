@@ -4,6 +4,7 @@ class CreateDrivingRecords < ActiveRecord::Migration[6.0]
       t.belongs_to :driver
       t.string :start_time
       t.string :end_time
+      t.string :total_time
       t.string :miles_driven
 
       t.timestamps

@@ -13,4 +13,21 @@
 #
 class DrivingRecord < ApplicationRecord
   belongs_to :driver, class_name: 'Driver', foreign_key: :driver_id
+
+  before_create :calculate_time
+
+  def calculate_time
+    startArray = self.start_time.split(':')
+    endArray = self.end_time.split(':')
+
+    totalMin = endArray[1].to_i - startArray[1].to_i
+    totalHr = endArray[0].to_i - startArray[0].to_i
+
+    if totalMin < 0
+      totalHr -= 1
+      totalMin += 60
+    end
+    self.total_time = "#{totalHr}:#{totalMin}"
+  end
+
 end
