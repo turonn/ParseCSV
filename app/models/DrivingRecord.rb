@@ -12,6 +12,10 @@
 #  updated_at     :datetime         not null
 #
 class DrivingRecord < ApplicationRecord
+  validates :start_time
+  validates :end_time
+  validates :miles_driven 
+  
   belongs_to :driver, class_name: 'Driver', foreign_key: :driver_id
 
   before_create :calculate_time

@@ -18,7 +18,7 @@ class DrivingRecordsController < ApplicationController
     if @record.save
       redirect_to driving_records_path, notice: "record created"
     else
-      render :new, alert: "did not save"
+      render :new, alert: @record.errors.full_messages
     end
 
   end
@@ -32,7 +32,7 @@ class DrivingRecordsController < ApplicationController
     if @record.update(driving_record_params)
       redirect_to driving_records_path, notice: "record updated"
     else
-      render :edit, alert: "did not update"
+      render :edit, alert: @record.errors.full_messages
     end
   end
 
@@ -43,7 +43,7 @@ class DrivingRecordsController < ApplicationController
     if @record.destroy
       redirect_to driving_records_path, notice: "record deleted"
     else
-      redirect_to driving_records_path, alert: "record deleted"
+      redirect_to driving_records_path, alert: @record.errors.full_messages
     end
     
     #driving_records_path DELETE

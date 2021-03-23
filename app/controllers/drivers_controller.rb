@@ -18,7 +18,7 @@ class DriversController < ApplicationController
     if @driver.save
       redirect_to drivers_path, notice: "driver created"
     else
-      render :new, alert: "did not save"
+      redirect_to new_driver_path, alert: @driver.errors.full_messages
     end
 
   end
@@ -32,7 +32,7 @@ class DriversController < ApplicationController
     if @driver.update(driver_params)
       redirect_to drivers_path, notice: "driver updated"
     else
-      render :edit, alert: "did not update"
+      render :edit, alert: @driver.errors.full_messages
     end
   end
 
@@ -41,11 +41,11 @@ class DriversController < ApplicationController
 
   def destroy
     if @driver.driving_records.count != 0
-      redirect_to drivers_path, alert: "Driver has trips assigned. Cannot delete."
+      redirect_to drivers_path, alert: "Cannot delete driver with assigned trips."
     elsif @driver.destroy
       redirect_to drivers_path, notice: "driver deleted"
     else
-      redirect_to drivers_path, alert: "driver not deleted"
+      redirect_to drivers_path, alert: @driver.errors.full_messages
     end
     
     #drivers_path DELETE
