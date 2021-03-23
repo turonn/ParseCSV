@@ -41,9 +41,9 @@ class DrivingRecordsController < ApplicationController
 
   def destroy
     if @record.destroy
-      redirect_to root_path, notice: "record deleted"
+      redirect_to driving_records_path, notice: "record deleted"
     else
-      redirect_to root_path, alert: "record deleted"
+      redirect_to driving_records_path, alert: "record deleted"
     end
     
     #driving_records_path DELETE
