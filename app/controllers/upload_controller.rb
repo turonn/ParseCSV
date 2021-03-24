@@ -17,32 +17,42 @@ class UploadController < ApplicationController
         case arr[0]
         when "Driver"
           if arr.length == 2
-            Driver.create({
+            driver = Driver.create({
               name: arr[1]
             })
+            if driver.errors.any?
+              alert += driver.errors.full_messages.map do |error|
+                error + " - " + line
+              end
+            end
           else
-            alert << "Not 2 args Driver error with line " + line
+            alert << "Not 2 args Driver error with line - " + line
           end
 
         when "Trip"
           if arr.length == 5
-            DrivingRecord.create({
+            record = DrivingRecord.create({
               driver: Driver.find_by(name: arr[1]),
               start_time: arr[2],
               end_time: arr[3],
               miles_driven: arr[4]
             })
+            if record.errors.any?
+              alert += record.errors.full_messages.map do |error|
+                error + " - " + line
+              end
+            end
           else
-            alert << "Not 4 args Trip error with line " + line
+            alert << "Not 4 args Trip error with line - " + line
           end
 
         else
-          alert << "Not Trip/Driver error on " + line
+          alert << "Missing keyword Trip/Driver for - " + line
         end
 
 
       end
-      redirect_to drivers_path, notice: "files imported", alert: alert.each
+      redirect_to drivers_path, notice: "import processed", alert: alert
     end
   end
 end

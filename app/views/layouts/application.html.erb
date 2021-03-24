@@ -15,8 +15,10 @@
     <% if notice %>
       <p class="notice" ><%= notice %></p>
     <% end %>
-    <% if alert && alert != [] %>
-      <p class="alert" ><%= alert %></p>
+    <% if alert %>
+      <% alert.each do |message| %>
+        <p class="alert" ><%= message %></p>
+      <% end %>
     <% end %>
     
     <div class="body">
