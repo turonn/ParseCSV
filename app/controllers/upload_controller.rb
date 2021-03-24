@@ -5,13 +5,17 @@ class UploadController < ApplicationController
 
   def import
     file = params[:file]
+    lineNum = 0
+    alert = []
 
     if file == nil
-      redirect_to upload_index_path, alert: "select file to upload"
+      alert << "select file to upload"
+      redirect_to upload_index_path, alert: alert
     else
       #send to a "sort" method that uploads drivers and records
       alert = []
       File.foreach(file).each do |line|
+        lineNum += 1
         arr = line.split(' ')
 
         case arr[0]
@@ -22,11 +26,11 @@ class UploadController < ApplicationController
             })
             if driver.errors.any?
               alert += driver.errors.full_messages.map do |error|
-                error + " - " + line
+                error + " - line #{lineNum} #{line}" 
               end
             end
           else
-            alert << "Not 2 args Driver error with line - " + line
+            alert << "Not 2 args Driver error with line - line #{lineNum} #{line}" 
           end
 
         when "Trip"
@@ -39,15 +43,15 @@ class UploadController < ApplicationController
             })
             if record.errors.any?
               alert += record.errors.full_messages.map do |error|
-                error + " - " + line
+                error + " - line #{lineNum} #{line}" 
               end
             end
           else
-            alert << "Not 4 args Trip error with line - " + line
+            alert << "Not 4 args Trip error with line - line #{lineNum} #{line}" 
           end
 
         else
-          alert << "Missing keyword Trip/Driver for - " + line
+          alert << "Missing keyword Trip/Driver for - line #{lineNum} #{line}" 
         end
 
 

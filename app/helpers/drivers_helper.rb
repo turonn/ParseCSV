@@ -3,6 +3,7 @@ module DriversHelper
   def total_miles(driver)
     total = 0.0
     driver.driving_records.each do |record|
+      next if record.trip_speed.to_f < 5 || record.trip_speed.to_f > 100
       total += record.miles_driven.to_f
     end
     total
@@ -11,6 +12,7 @@ module DriversHelper
   def total_time(driver)
     total = [0, 0]
     driver.driving_records.each do |record|
+      next if record.trip_speed.to_f < 5 || record.trip_speed.to_f > 100
       record_time = record.total_time.split(':')
       total[0] += record_time[0].to_i
       total[1] += record_time[1].to_i
@@ -31,14 +33,17 @@ module DriversHelper
   end
 
   def average_speed(driver)
-    time = total_time(driver).split(':')
     distance = total_miles(driver).to_f
+    unless distance == 0
+      time = total_time(driver).split(':')
 
-    time[1] = time[1].to_f / 60.0
-    timeNum = time[0].to_i + time[1]
+      time[1] = time[1].to_f / 60.0
+      timeNum = time[0].to_i + time[1]
 
-    distance / timeNum
-
+      (distance / timeNum).round()
+    else
+      ""
+    end
   end
 
 end

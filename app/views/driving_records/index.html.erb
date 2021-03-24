@@ -7,6 +7,7 @@
     <th>End Time</th>
     <th>Total Time</th>
     <th>Miles Driven</th>
+    <th>Trip Speed</th>
     <th>Edit Record</th>
     <th>Delete Record</th>
   </tr>
@@ -18,6 +19,7 @@
         <td><%= record.end_time %></th>
         <td><%= record.total_time %></th>
         <td><%= record.miles_driven %></th>
+        <td><%= record.trip_speed %></th>
         <td><%= link_to "edit", edit_driving_record_path(record.id) %> </td>
         <td><%= link_to "delete", driving_record_path(record.id), method: :delete %> </td>
       </tr>
@@ -32,9 +34,12 @@
 
 <br/>
 
-<%= button_to "upload driving record", upload_index_path, method: :get, class:"button" %>
+<%= button_to "upload driving record", upload_index_path, method: :get, class:"button-submit" %>
 
 <br/>
 
 <%= button_to "add single record", new_driving_record_path, method: :get, class:"button" %>
 
+<br/>
+
+<%= button_to "clear database", clear_database_path, method: :delete, class:"button" %>

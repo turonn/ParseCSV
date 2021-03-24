@@ -1,5 +1,5 @@
 class DriversController < ApplicationController
-  before_action :set_drivers, only: [:index]
+  before_action :set_sorted_drivers, only: [:index]
   before_action :set_single_driver, only: [:edit, :update, :destroy]
 
   def index
@@ -53,8 +53,18 @@ class DriversController < ApplicationController
 
   private
 
-  def set_drivers
+  def set_sorted_drivers
     @drivers = Driver.all
+    @drivers = @drivers.sort_by { |driver| [total_miles(driver)] }
+  end
+
+  def total_miles(driver)
+    total = 0.0
+    driver.driving_records.each do |record|
+      next if record.trip_speed.to_f < 5 || record.trip_speed.to_f > 100
+      total += record.miles_driven.to_f
+    end
+    -total
   end
 
   def set_single_driver

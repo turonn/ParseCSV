@@ -9,10 +9,10 @@
 <table>
   <tr>
     <th>Driver</th>
-    <th>numbrer of trips</th>
-    <th>Total Time</th>
-    <th>Total Distance</th>
-    <th>Average Speed</th>
+    <%# <th>Total Time</th> %>
+    <th>Total Miles</th>
+    <th>Average Speed (mph)</th>
+    <%# <th>numbrer of trips</th> %>
     <th>Edit Driver</th>
     <th>Delete Driver</th>
   </tr>
@@ -20,10 +20,10 @@
     <% @drivers.each do |driver| %>
       <tr>
         <td><%= driver.name %></td>
-        <td><%= driver.driving_records.count %></th>
-        <td><%= total_time(driver) %></th>
+        <%# <td><%= total_time(driver) </th> %>
         <td><%= total_miles(driver).round() %></th>
-        <td><%= average_speed(driver).round() %></th>
+        <td><%= average_speed(driver) %></th>
+        <%# <td><%= driver.driving_records.count </th> %>
         <td><%= link_to "edit", edit_driver_path(driver.id) %> </td>
         <td><%= link_to "delete", driver_path(driver.id), method: :delete %> </td>
       </tr>
@@ -38,9 +38,12 @@
 
 <br/>
 
-<%= button_to "upload driving record", upload_index_path, method: :get, class:"button" %>
+<%= button_to "upload driving record", upload_index_path, method: :get, class:"button-submit" %>
 
 <br/>
 
 <%= button_to "add single driver", new_driver_path, method: :get, class:"button" %>
 
+<br/>
+
+<%= button_to "clear database", clear_database_path, method: :delete, class:"button" %>

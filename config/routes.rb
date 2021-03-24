@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post 'upload/import', to: 'upload#import', as: 'import_driving_records'
   resources :upload, only: [:index]
 
+  delete 'driving_records/clear_database', to: 'driving_records#clear_database', as: 'clear_database'
   resources :driving_records
 
   resources :drivers

@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2021_03_16_185252) do
     t.string "end_time"
     t.string "total_time"
     t.string "miles_driven"
+    t.string "trip_speed"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["driver_id"], name: "index_driving_records_on_driver_id"

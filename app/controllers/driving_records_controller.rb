@@ -1,6 +1,7 @@
 class DrivingRecordsController < ApplicationController
-  before_action :set_driving_records, only: [:index]
+  before_action :set_driving_records, only: [:index, :clear_database]
   before_action :set_single_record, only: [:edit, :update, :destroy]
+  before_action :set_drivers, only: [:clear_database]
 
   def index
     #driving_records_path
@@ -49,10 +50,26 @@ class DrivingRecordsController < ApplicationController
     #driving_records_path DELETE
   end
 
+  def clear_database
+    if @drivingRecords.delete_all
+      if @drivers.delete_all
+        redirect_to import_driving_records_path, notice: "Database cleared; ready for new upload."
+      else
+        redirect_to drivers_path, alert: @drivers.errors.full_messages
+      end
+    else
+      redirect_to driving_records_path, alert: @drivingRecords.errors.full_messages
+    end
+  end
+
   private
 
   def set_driving_records
     @drivingRecords = DrivingRecord.all
+  end
+
+  def set_drivers
+    @drivers = Driver.all
   end
 
   def set_single_record
