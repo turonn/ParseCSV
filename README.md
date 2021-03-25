@@ -4,7 +4,7 @@
     <p>
       After downloading, open your terminal and navigate to this directory. Inside the project directory run:
     </p>
-    <code sytle="width: 100%">
+    <code sytle="display: block; width: 100%">
       $rails s
     </code>
   </section>
