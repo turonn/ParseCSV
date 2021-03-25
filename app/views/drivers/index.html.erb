@@ -21,7 +21,7 @@
       <tr>
         <td><%= driver.name %></td>
         <%# <td><%= total_time(driver) </th> %>
-        <td><%= total_miles(driver).round() %></th>
+        <td><%= total_miles(driver).to_f.round() %></th>
         <td><%= average_speed(driver) %></th>
         <%# <td><%= driver.driving_records.count </th> %>
         <td><%= link_to "edit", edit_driver_path(driver.id) %> </td>

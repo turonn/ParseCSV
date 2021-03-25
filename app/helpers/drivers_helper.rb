@@ -6,7 +6,7 @@ module DriversHelper
       next if record.trip_speed.to_f < 5 || record.trip_speed.to_f > 100
       total += record.miles_driven.to_f
     end
-    total
+    total.to_s
   end
 
   def total_time(driver)
@@ -27,6 +27,10 @@ module DriversHelper
       total[1] = remainder
 
       total[0] += hours
+    end
+
+    if total[1] < 10
+      total[1] = "0#{total[1]}"
     end
 
     "#{total[0]}:#{total[1]}"
