@@ -1,5 +1,12 @@
-
-
+<h2>Installation</h2>
+<div class="container">
+  <section>
+    <p>
+      After downloading, open your terminal and navigate to this directory. Inside the project directory run:
+      <code>$rails s</code>
+    </p>
+  </section>
+</div>
 <h2>My Approach</h2>
 <div class="container">
   <section>
