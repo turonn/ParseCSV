@@ -2,10 +2,19 @@
 <div class="container">
   <section>
     <p>
-      After downloading, open your terminal and navigate to this directory. Inside the project directory run: <code>$rails s</code>
+      After downloading, open your terminal and navigate to the project directory. Inside the project directory run: <code>$rails s</code>
     </p>
     <p>
       Then, in your browser of choice, navigate to <code>localhost:3000</code>
+    </p>
+    <p>
+      You can read about my approach on the root page, or navigate using the navbar to the "Upload Records" page to upload your text files. After uploading your text files, you will be rerouted to the Drivers view where the solution will be shown.
+    </p>
+    <p>
+      Additionally, you can check out all of the trip records you uploaded in the Trips view (aka DrivingRecords view). I have also added functionality stemming from the Trips and Drivers views where you can add a new Trip/Driver, edit an existing Trip/Driver, or delete an existing Trip/Driver. You cannot delete a driver that has trips assigend to them, however.
+    </p>
+    <p>
+      Finally, if you wish to test the program with a separate data set, I made a button that can help you clear all data from the database and reroute you back to the uploads view for you to send in another batch of dummy data.
     </p>
   </section>
 </div>
