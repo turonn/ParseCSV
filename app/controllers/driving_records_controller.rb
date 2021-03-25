@@ -53,7 +53,7 @@ class DrivingRecordsController < ApplicationController
   def clear_database
     if @drivingRecords.delete_all
       if @drivers.delete_all
-        redirect_to import_driving_records_path, notice: "Database cleared; ready for new upload."
+        redirect_to upload_index_path, notice: "Database cleared; ready for new upload."
       else
         redirect_to drivers_path, alert: @drivers.errors.full_messages
       end

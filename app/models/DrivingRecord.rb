@@ -18,12 +18,15 @@ class DrivingRecord < ApplicationRecord
     message: "invalid time value %{value}" }
   validates :miles_driven, presence: { message: "- Trip must have miles driven." }
   validates :miles_driven, format: { without: /[^0-9.]/, message: "invalid distance value %{value}"}
-  #validates :calculate_speed
   
   belongs_to :driver, class_name: 'Driver', foreign_key: :driver_id
 
   before_create :calculate_time
   before_create :calculate_speed
+
+  #scope :baby_bear_records, -> { where(trip_speed:) }
+  #potential to add in a scope to filter out records slower than 5mph and faster than 100mph
+  #use the scope in helper methods?
 
   def calculate_time
     startArray = self.start_time.split(':')
@@ -49,7 +52,7 @@ class DrivingRecord < ApplicationRecord
     time[1] = time[1].to_f / 60.0
     timeNum = time[0].to_i + time[1]
 
-    self.trip_speed = (distance / timeNum).round(1)
+    self.trip_speed = (distance / timeNum).round(1).to_s
     
   end
 

@@ -56,9 +56,13 @@ class DriversController < ApplicationController
   def set_sorted_drivers
     @drivers = Driver.all
     @drivers = @drivers.sort_by { |driver| [total_miles(driver)] }
+    #turn this into a scope?
   end
 
   def total_miles(driver)
+    #this is a copied method from helper...
+    #I wonder if there is a way to use this in the helper method or somehow
+    #make it so we aren't repeating ourselves
     total = 0.0
     driver.driving_records.each do |record|
       next if record.trip_speed.to_f < 5 || record.trip_speed.to_f > 100
