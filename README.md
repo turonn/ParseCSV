@@ -2,11 +2,11 @@
 <div class="container">
   <section>
     <p>
-      After downloading, open your terminal and navigate to this directory. Inside the project directory run:
+      After downloading, open your terminal and navigate to this directory. Inside the project directory run: <code>$rails s</code>
     </p>
-    <code sytle="display: block; width: 100%">
-      $rails s
-    </code>
+    <p>
+      Then, in your browser of choice, navigate to <code>localhost:3000</code>
+    </p>
   </section>
 </div>
 <h2>My Approach</h2>
