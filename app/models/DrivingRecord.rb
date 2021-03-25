@@ -36,6 +36,9 @@ class DrivingRecord < ApplicationRecord
       totalHr -= 1
       totalMin += 60
     end
+    if totalMin < 10
+      totalMin = "0#{totalMin}"
+    end
     self.total_time = "#{totalHr}:#{totalMin}"
   end
 
