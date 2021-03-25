@@ -3,8 +3,10 @@
   <section>
     <p>
       After downloading, open your terminal and navigate to this directory. Inside the project directory run:
-      <code>$rails s</code>
     </p>
+    <code sytle="width: 100%">
+      $rails s
+    </code>
   </section>
 </div>
 <h2>My Approach</h2>
