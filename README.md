@@ -2,7 +2,7 @@
 <div class="container">
   <section>
     <p>
-      After downloading, open your terminal and navigate to the project directory. Inside the project directory run: <code>$rails s</code>
+      After downloading, open your terminal and navigate to the project directory. Inside the project directory run: <code>$ rails s</code>
     </p>
     <p>
       Then, in your browser of choice, navigate to <code>localhost:3000</code>
