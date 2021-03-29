@@ -99,7 +99,7 @@ RSpec.describe DrivingRecord, type: :model do
       subject.miles_driven = "45"
       expect(subject.calculate_speed).to eq "45.0"
     end
-    it 'can handle rounding' do
+    it 'can handle rounding to the tenth' do
       subject.total_time = ":59"
       subject.miles_driven = "45"
       expect(subject.calculate_speed).to eq "45.8"
